@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import { Layout } from 'antd'
+import { CartContainer } from './containers/CartContainer'
+import { ProductsContainer } from './containers/ProductsContainer'
+import './App.scss';
+import { getProducts } from './services/ProductService';
+import { Product } from './entities/Product';
 
 const App: React.FC = () => {
+  /**
+   * useState and useEffect example
+   */
+  const [collapsed, setCollapsed] = useState(false)
+  const [products, setProducts] = useState<Product[] | undefined>(undefined)
+
+  useEffect(() => {
+    /**
+     * example for getting products from API call
+     */
+    getProducts().then((res: any) => {
+      setProducts(res)
+    })
+  }, [])
+  
+  const toggleCart = () => {
+    setCollapsed(!collapsed)
+  }
+  const onClose = () => {
+    setCollapsed(false)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Layout className="App">
+      <CartContainer collapsed={collapsed} onClose={onClose} />
+      <ProductsContainer products={products} collapsed={collapsed} toggleCart={toggleCart} />
+    </Layout>
+  )
 }
 
-export default App;
+export default App

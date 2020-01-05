@@ -7,8 +7,7 @@ const { Header, Content } = Layout
 interface ProductsContainerProps {
     collapsed: boolean,
     products?: Product[],
-    toggleCart: () => void,
-    // getProducts?: () => void
+    toggleCart: () => void
 }
 
 export const ProductsContainer: React.FC<ProductsContainerProps> = ({ ...props }) => {

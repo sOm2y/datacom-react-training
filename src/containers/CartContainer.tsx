@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { List, Drawer, Button } from 'antd'
-import { Cart } from '../entities/Cart'
-interface CartContainerProps {
-  carts?: Cart[]
-  collapsed: boolean,
-  onClose: () => void,
-  removeProduct?: (cartItem: Cart) => void
-}
-export const CartContainer: React.FC<CartContainerProps> = ({ ...props }) => {
+import { CartItem } from '../entities/Cart'
 
+interface CartContainerProps {
+  carts?: CartItem[]
+  collapsed: boolean
+  onClose: () => void
+  removeProduct?: (cartItem: CartItem) => void
+}
+
+export const CartContainer: React.FC<CartContainerProps> = ({ ...props }) => {
   const { collapsed, onClose, carts } = props
 
   const [totalPrice, setTotalPrice] = useState<number>(0)
@@ -51,14 +52,14 @@ export const CartContainer: React.FC<CartContainerProps> = ({ ...props }) => {
             })}`}</b>
           </div>
         }
-        renderItem={(cartItem: Cart, index) => (
+        renderItem={(cartItem: CartItem, index: any) => (
           <List.Item
             key={index}
             actions={[
               /**
                *  example for removing cart item/product
                */
-              <Button onClick={() => { }}> Remove </Button>
+              <Button onClick={() => {}}> Remove </Button>
             ]}
           >
             <List.Item.Meta
@@ -79,5 +80,3 @@ export const CartContainer: React.FC<CartContainerProps> = ({ ...props }) => {
     </Drawer>
   )
 }
-
-

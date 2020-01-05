@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Layout } from 'antd'
 import { CartContainer } from './containers/CartContainer'
 import { ProductsContainer } from './containers/ProductsContainer'
-import './App.scss';
-import { getProducts } from './services/ProductService';
-import { Product } from './entities/Product';
+import { getProducts } from './services/ProductService'
+import { Product } from './entities/Product'
+import './App.scss'
 
 const App: React.FC = () => {
   /**
@@ -21,7 +21,7 @@ const App: React.FC = () => {
       setProducts(res)
     })
   }, [])
-  
+
   const toggleCart = () => {
     setCollapsed(!collapsed)
   }
@@ -32,7 +32,11 @@ const App: React.FC = () => {
   return (
     <Layout className="App">
       <CartContainer collapsed={collapsed} onClose={onClose} />
-      <ProductsContainer products={products} collapsed={collapsed} toggleCart={toggleCart} />
+      <ProductsContainer
+        products={products}
+        collapsed={collapsed}
+        toggleCart={toggleCart}
+      />
     </Layout>
   )
 }

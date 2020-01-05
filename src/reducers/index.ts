@@ -5,4 +5,5 @@ const allReducers = combineReducers({
   cartReducer
 })
 
+export type RootState = ReturnType<typeof allReducers>
 export default allReducers

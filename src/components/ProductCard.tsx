@@ -1,5 +1,8 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Card, Button } from 'antd'
+import { addCartItem } from '../store/cart/actions'
+import { Product } from '../entities/Product';
 
 export const ProductCard = ({ ...props }) => {
   const { product, addProduct } = props
@@ -29,3 +32,8 @@ export const ProductCard = ({ ...props }) => {
     </div>
   )
 }
+
+const mapDispatchToProps = {
+  addProduct: (product:Product) => addCartItem(product)
+}
+export default connect(null, mapDispatchToProps)(ProductCard)

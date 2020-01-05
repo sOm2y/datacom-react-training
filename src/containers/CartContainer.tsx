@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { connect } from 'react-redux'
 import { List, Drawer, Button } from 'antd'
 import { CartItem } from '../entities/Cart'
+import { RootState } from '../reducers'
+import { removeCartItem } from '../store/cart/actions'
 
 interface CartContainerProps {
   carts?: CartItem[]
@@ -27,7 +30,7 @@ export const CartContainer: React.FC<CartContainerProps> = ({ ...props }) => {
   }
 
   useEffect(() => {
-    // calculateTotalPrice()
+    calculateTotalPrice()
   }, [carts])
 
   return (
@@ -80,3 +83,14 @@ export const CartContainer: React.FC<CartContainerProps> = ({ ...props }) => {
     </Drawer>
   )
 }
+
+const mapStateToProps = (state: RootState) => {
+  return {
+    carts: state.cartReducer.carts
+  }
+}
+
+const mapDispatchToProps = {
+  removeProduct: (cartItem: CartItem) => removeCartItem(cartItem)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer)

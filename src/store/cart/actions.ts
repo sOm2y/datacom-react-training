@@ -2,12 +2,12 @@ import { AddProduct, RemoveProduct } from './types'
 import { Product } from '../../entities/Product'
 import { CartItem } from '../../entities/Cart'
 
-export const addProduct = (product: Product) => ({
+export const addCartItem = (product: Product) => ({
   type: AddProduct,
   payload: product
 })
 
-export const removeProduct = (cartItem: CartItem) => ({
+export const removeCartItem = (cartItem: CartItem) => ({
   type: RemoveProduct,
   payload: cartItem
 })

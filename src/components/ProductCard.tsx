@@ -19,10 +19,11 @@ export const ProductCard = ({ ...props }) => {
         </p>
         <Button
           type="primary"
-          onClick={() => {
+          onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
             /**
              * example for adding products to cart
              */
+            e.preventDefault()
             addProduct(product)
           }}
         >

@@ -1,14 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Layout, Icon, Row, Col } from 'antd'
+import { Layout, Icon, Row, Col, Badge } from 'antd'
 import { Product } from '../entities/Product'
 import ProductCard from '../components/ProductCard'
 import { RootState } from '../reducers'
+import { CartItem } from '../entities/Cart'
 const { Header, Content } = Layout
 
 interface ProductsContainerProps {
   collapsed: boolean
   products?: Product[]
+  carts?: CartItem[]
   toggleCart: () => void
 }
 
@@ -16,11 +18,20 @@ export const ProductsContainer: React.FC<ProductsContainerProps> = ({
   ...props
 }) => {
   const { products, toggleCart } = props
+  
+  const sumCartItem = () => {
+    return (
+      props.carts &&
+      props.carts.reduce((prev, next) => prev + (next['quantity'] || 0), 0)
+    )
+  }
 
   return (
     <>
       <Header style={{ background: '#fff', padding: 0 }}>
-        <Icon className="trigger" type="shopping-cart" onClick={toggleCart} />
+        <Badge count={sumCartItem()}>
+          <Icon className="trigger" type="shopping-cart" onClick={toggleCart} />
+        </Badge>
       </Header>
 
       <Content
@@ -47,6 +58,7 @@ export const ProductsContainer: React.FC<ProductsContainerProps> = ({
 const mapStateToProps = (state: RootState) => {
   return {
     // products: state.productReducer.products
+    carts: state.cartReducer.carts
   }
 }
 

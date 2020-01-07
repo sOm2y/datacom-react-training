@@ -1,5 +1,5 @@
-import { CartItem } from '../entities/Cart'
-import { CartActionTypes, AddProduct, RemoveProduct } from '../store/cart/types'
+import { CartItem } from '../../entities/Cart'
+import { CartActionTypes, AddProduct, RemoveProduct } from '../actions/cart/types'
 
 export interface CartsState {
   carts: CartItem[]

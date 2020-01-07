@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { List, Drawer, Button } from 'antd'
 import { CartItem } from '../entities/Cart'
-import { RootState } from '../reducers'
-import { removeCartItem } from '../store/cart/actions'
+import { RootState } from '../store/reducers'
+import { removeCartItem } from '../store/actions/cart/actions'
 
 interface CartContainerProps {
 	carts?: CartItem[]

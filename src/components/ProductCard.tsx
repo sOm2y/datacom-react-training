@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Card, Button } from 'antd'
-import { addCartItem } from '../store/cart/actions'
+import { addCartItem } from '../store/actions/cart/actions'
 import { Product } from '../entities/Product';
 
 export const ProductCard = ({ ...props }) => {

@@ -4,7 +4,7 @@ import CartContainer from './containers/CartContainer'
 import ProductsContainer from './containers/ProductsContainer'
 import './App.scss'
 
-const App: React.FC = (props) => {
+const App: React.FC = () => {
   /**
    * useState and useEffect example
    */

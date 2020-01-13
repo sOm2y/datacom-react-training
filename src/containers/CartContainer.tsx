@@ -64,13 +64,11 @@ export const CartContainer: React.FC<CartContainerProps> = ({ ...props }) => {
 							 *  example for removing cart item/product
 							 */
 							<Button
-								onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-									e.preventDefault()
+								onClick={() => {
 									removeProduct(cartItem)
 								}}
 							>
-								{' '}
-								Remove{' '}
+								Remove
 							</Button>
 						]}
 					>

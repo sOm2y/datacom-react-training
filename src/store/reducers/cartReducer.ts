@@ -5,7 +5,7 @@ export interface CartsState {
   carts: CartItem[]
 }
 
-const initialState: CartsState = { carts: [] }
+export const initialState: CartsState = { carts: [] }
 const cartReducer = (state = initialState, action: CartActionTypes) => {
   switch (action.type) {
     case AddProduct:

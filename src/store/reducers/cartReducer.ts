@@ -19,7 +19,7 @@ const cartReducer = (state = initialState, action: CartActionTypes) => {
           ...state,
           carts: state.carts.filter(item =>
             item.product.name === addedProduct.product.name
-              ? { ...item, quantity: addedProduct }
+              ? { ...item, quantity: addedProduct.quantity }
               : item
           )
         }
@@ -42,12 +42,11 @@ const cartReducer = (state = initialState, action: CartActionTypes) => {
           ]
         }
       } else {
-        action.payload.quantity -= 1
         return {
           ...state,
           carts: state.carts.filter(item =>
             item.product.name === action.payload.product.name
-              ? { ...item, quantity: action.payload.quantity }
+              ? { ...item, quantity: item.quantity -=1 }
               : item
           )
         }

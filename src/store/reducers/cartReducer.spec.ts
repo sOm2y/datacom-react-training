@@ -43,7 +43,7 @@ describe('Cart Reducer', () => {
     it('should remove product quantity if product has already existed in the cart', () => {
 		const expectedState = {
 			carts: [{ product: { name: 'product', price: 10 }, quantity: 2 }]
-        }
+        } as CartsState
 
 		expect(
             cartReducer(
@@ -51,6 +51,22 @@ describe('Cart Reducer', () => {
                 {
                     type: RemoveProduct,
                     payload: { product: { name: 'product', price: 10 }, quantity: 3 } as CartItem
+                } as CartActionTypes
+            )
+		).toEqual(expectedState)
+	})
+
+	it('should remove product item if product only has one item in the cart', () => {
+		const expectedState = {
+			carts: []
+        } as CartsState
+
+		expect(
+            cartReducer(
+                { carts: [{ product: { name: 'product', price: 10 }, quantity: 1 }] } as CartsState,
+                {
+                    type: RemoveProduct,
+                    payload: { product: { name: 'product', price: 10 }, quantity: 1 } as CartItem
                 } as CartActionTypes
             )
 		).toEqual(expectedState)

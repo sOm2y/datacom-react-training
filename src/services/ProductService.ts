@@ -30,3 +30,7 @@ export const getProducts = () => {
       },2000)
   })
 }
+
+export default {
+  getProducts
+}

@@ -4,7 +4,13 @@ import { Card, Button } from 'antd'
 import { addCartItem } from '../store/actions/cart/actions'
 import { Product } from '../entities/Product';
 
-export const ProductCard = ({ ...props }) => {
+interface ProductCardProps {
+	product: Product
+	addProduct: (product: Product) => void
+}
+
+
+export const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
   const { product, addProduct } = props
   return (
     <div style={{ background: '#ECECEC', padding: '30px' }}>
@@ -19,11 +25,10 @@ export const ProductCard = ({ ...props }) => {
         </p>
         <Button
           type="primary"
-          onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+          onClick={() => {
             /**
              * example for adding products to cart
              */
-            e.preventDefault()
             addProduct(product)
           }}
         >

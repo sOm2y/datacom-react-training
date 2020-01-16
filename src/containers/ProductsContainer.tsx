@@ -22,7 +22,7 @@ export const ProductsContainer: React.FC<ProductsContainerProps> = ({
   const { products, toggleCart, getProducts } = props
 	useEffect(() => {
 		getProducts()
-	}, [])
+	}, [getProducts])
 
 
 	const sumCartItem = () => {

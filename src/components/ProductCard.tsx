@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 
-export const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ ...props }) => {
   const { product, addProduct } = props
   return (
     <div style={{ background: '#ECECEC', padding: '30px' }}>

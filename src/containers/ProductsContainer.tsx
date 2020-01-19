@@ -13,15 +13,15 @@ interface ProductsContainerProps {
 	products?: Product[]
 	carts?: CartItem[]
   toggleCart: () => void
-  getProducts: () => void
+
 }
 
 export const ProductsContainer: React.FC<ProductsContainerProps> = ({
 	...props
 }) => {
-  const { products, toggleCart, getProducts } = props
+  const { products, toggleCart } = props
 	useEffect(() => {
-		getProducts()
+
 	}, [getProducts])
 
 
@@ -63,14 +63,13 @@ export const ProductsContainer: React.FC<ProductsContainerProps> = ({
 
 const mapStateToProps = (state: RootState) => {
 	return {
-		products: state.productReducer.products,
 		carts: state.cartReducer.carts
 	}
 }
 
 const mapDispatchToProps = {
   
-    getProducts
+    
   
 }
 
